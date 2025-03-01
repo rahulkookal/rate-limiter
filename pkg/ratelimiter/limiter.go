@@ -21,7 +21,7 @@ type limiter struct {
 //   - interval: The time duration after which tokens are replenished.
 //
 // Returns:
-//   - *Limiter: A pointer to the initialized rate limiter instance.
+//   - *limiter: A pointer to the initialized rate limiter instance.
 func NewLimiter(rate int, interval time.Duration) *limiter {
 	return &limiter{
 		rate:      rate,
