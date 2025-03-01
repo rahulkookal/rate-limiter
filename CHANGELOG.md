@@ -1,8 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.0.2] - 2025-03-01
+- ⚡ Implemented test cases.
 
-## [1.0.0] - 2025-03-01
+## [0.0.1] - 2025-03-01
 ### Added
 - 🎉 Initial release of **Rate Limiter for Gin**.
 - ⚡ Implemented **bucket-based rate limiting** using the **Token Bucket algorithm**.
