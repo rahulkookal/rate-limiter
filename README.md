@@ -1,16 +1,16 @@
-# 🚀 Rate Limiter for Gin
+# 🚀 Rate Limiter for Gin - Bucket-Token Based Algorithm
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/rahulkookal/rate-limiter)](https://goreportcard.com/report/github.com/rahulkookal/rate-limiter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Reference](https://pkg.go.dev/badge/github.com/rahulkookal/rate-limiter.svg)](https://pkg.go.dev/github.com/rahulkookal/rate-limiter)
 
-A high-performance, **bucket-based, token-based, and IP-based rate limiter** for the **Gin web framework**.  
+A high-performance, **Standalone, Auth-Token and IP-based rate limiter using Bucket-Token Based Algorithm** for the **Gin web framework**.  
 Supports **in-memory** & **Redis-backed** storage (TODO).  
 
 ### ✨ **Features**
 - ⚡ **Lightweight & Efficient**
-- 🌍 **Token-based and IP-based rate limiting for Gin Middleware**
-- 🛠️ **Independent Bucket-Based Rate Limits** (Does not associate with external params)
+- 🌍 **Auth-Tokenand IP based rate limiting for Gin Middleware**
+- 🛠️ **Standalon Rate Limiter** (Does not associate with external params)
 - 🔧 **Customizable via CLI & Config**
 - 🟤️ **Pluggable storage (In-Memory, Redis - TODO)**
 
