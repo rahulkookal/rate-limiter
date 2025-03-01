@@ -1,0 +1,56 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - master  # Runs only on pushes to the master branch
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Get Latest Tag
+        id: get_latest_tag
+        run: |
+          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $latest_tag"
+          echo "latest_tag=$latest_tag" >> $GITHUB_ENV
+
+      - name: Determine Next Version
+        id: bump_version
+        run: |
+          latest_tag=${{ env.latest_tag }}
+          version=$(echo $latest_tag | sed 's/v//')
+          IFS='.' read -r -a parts <<< "$version"
+
+          # Bump minor version (Change as needed: major/minor/patch)
+          parts[1]=$((parts[1] + 1))  # Increment minor version
+          parts[2]=0  # Reset patch version
+
+          new_version="v${parts[0]}.${parts[1]}.${parts[2]}"
+          echo "New version: $new_version"
+          echo "new_version=$new_version" >> $GITHUB_ENV
+
+      - name: Create Git Tag
+        run: |
+          git tag -a ${{ env.new_version }} -m "Release ${{ env.new_version }}"
+          git push origin ${{ env.new_version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.new_version }}
+          name: "Release ${{ env.new_version }}"
+          body: "Automated release of ${{ env.new_version }} 🎉"
+          draft: false
+          prerelease: false
