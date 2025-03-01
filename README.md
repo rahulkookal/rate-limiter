@@ -8,7 +8,7 @@ A high-performance, **bucket-based rate limiter** for the **Gin web framework**.
 
 ## ✨ Features
 - ⚡ **Lightweight & Efficient** (Bucket Algorithm)
-- 🌍 **Works with Gin Middleware**(TO-DO)
+- 🌍 **Works with Gin Middleware**
 - 🛠️ **Custom Rate Limits**(TODO)
 - 📦 **Supports Redis for Distributed Throttling**(TODO)
 - 📝 **Easy Integration**
