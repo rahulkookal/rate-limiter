@@ -6,7 +6,7 @@ import (
 )
 
 // Limiter struct manages rate limiting using a token bucket algorithm.
-type Limiter struct {
+type limiter struct {
 	rate      int           // Maximum requests allowed per duration
 	interval  time.Duration // Time window for rate limiting
 	tokens    int           // Available tokens
@@ -14,9 +14,16 @@ type Limiter struct {
 	mutex     sync.Mutex    // Ensures thread safety
 }
 
-// NewLimiter creates a new rate limiter with the given rate and time interval.
-func NewLimiter(rate int, interval time.Duration) *Limiter {
-	return &Limiter{
+// NewLimiter creates a new token bucket rate limiter.
+//
+// Parameters:
+//   - rate: The number of tokens added to the bucket per interval.
+//   - interval: The time duration after which tokens are replenished.
+//
+// Returns:
+//   - *Limiter: A pointer to the initialized rate limiter instance.
+func NewLimiter(rate int, interval time.Duration) *limiter {
+	return &limiter{
 		rate:      rate,
 		interval:  interval,
 		tokens:    rate, // Start with a full bucket
@@ -24,8 +31,15 @@ func NewLimiter(rate int, interval time.Duration) *Limiter {
 	}
 }
 
-// Allow checks if a request can proceed or should be rate limited.
-func (l *Limiter) Allow() bool {
+// Allow checks if a request is allowed under the rate limit.
+//
+// It refills tokens based on the elapsed time since the last check
+// and consumes a token if available.
+//
+// Returns:
+//   - true: If a request is allowed (token available).
+//   - false: If a request is denied (no tokens left).
+func (l *limiter) Allow() bool {
 	l.mutex.Lock()
 	defer l.mutex.Unlock()
 

@@ -9,7 +9,7 @@ import (
 
 // testCmd represents the test example command
 var testCmd = &cobra.Command{
-	Use:   "test",
+	Use:   "limit",
 	Short: "Run a rate limiter test example",
 	Run: func(cmd *cobra.Command, args []string) {
 		examples.Run(rate, interval)
