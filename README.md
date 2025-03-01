@@ -33,7 +33,7 @@ go run main.go rate-limiter --rate 5 --interval 1s
 OR  
 Using `cobra-cli`:
 ```sh
-go run main.go rate-limiter -r 5 -i 1s
+go run . rate-limiter -r 4 -i 1s
 ```
 **📌 Output**
 ```sh
@@ -41,9 +41,12 @@ go run main.go rate-limiter -r 5 -i 1s
 ✅ Request allowed 2
 ✅ Request allowed 3
 ✅ Request allowed 4
-✅ Request allowed 5
-❌ Request denied 6
-❌ Request denied 7
+❌ Request denied 5
+✅ Request allowed 6
+✅ Request allowed 7
+✅ Request allowed 8
+✅ Request allowed 9
+❌ Request denied 10
 ...
 ```
 
@@ -57,7 +60,7 @@ go run main.go gin-middleware --mode ip --rate 5 --interval 10s
 OR  
 Using `cobra-cli`:
 ```sh
-go run main.go gin-middleware -m token -r 5 -i 10s
+go run . gin-middleware -m token -r 5 -i 10s
 ```
 
 **📌 Example API Calls**
@@ -95,7 +98,7 @@ rate-limiter/
 ---
 
 ### 📛 **License**
-This project is licensed under **[The Unlicense](https://opensource.org/license/unlicense/)**.
+This project is licensed under **[MIT License.](https://github.com/rahulkookal/rate-limiter/blob/master/LICENSE)**.
 
 ---
 

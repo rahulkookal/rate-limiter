@@ -21,7 +21,7 @@ func RunServer(config middleware.RateLimiterConfig) {
 	// Apply middleware
 	r.Use(rateLimiter)
 
-	r.GET("/", func(c *gin.Context) {
+	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{"message": fmt.Sprintf("Welcome! Mode: %s, Rate Limit: %d req/%s", config.Mode, config.Rate, config.Interval)})
 	})
 
