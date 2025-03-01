@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/rahulkookal/rate-limiter/pkg/middleware"
+	middleware "github.com/rahulkookal/rate-limiter/pkg/gin-middleware"
 )
 
 // RunServer starts a Gin server with the selected rate-limiting configuration
