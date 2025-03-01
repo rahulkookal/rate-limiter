@@ -34,9 +34,9 @@ import (
 func RateLimiterFactory(config RateLimiterConfig) (gin.HandlerFunc, error) {
 	switch config.Mode {
 	case "ip":
-		return iPRateLimiterMiddleware(config.Rate, config.Interval), nil
+		return iPBucketRateLimiterMiddleware(config.Rate, config.Interval), nil
 	case "token":
-		return tokenRateLimiterMiddleware(config.Rate, config.Interval), nil
+		return authTokenBucketRateLimiterMiddleware(config.Rate, config.Interval), nil
 	default:
 		return nil, fmt.Errorf("invalid rate limiter mode: %s", config.Mode)
 	}
