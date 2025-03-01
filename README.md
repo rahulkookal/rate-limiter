@@ -4,14 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Go Reference](https://pkg.go.dev/badge/github.com/rahulkookal/rate-limiter.svg)](https://pkg.go.dev/github.com/rahulkookal/rate-limiter)
 
-A high-performance, **bucket-based rate limiter** for the **Gin web framework**. Supports in-memory & Redis-backed storage.
+A high-performance, **bucket-based, token-based and ip-based rate limiter** for the **Gin web framework**. Supports in-memory & Redis-backed storage.
 
 ## ✨ Features
-- ⚡ **Lightweight & Efficient** (Bucket Algorithm)
-- 🌍 **Works with Gin Middleware**
-- 🛠️ **Custom Rate Limits**(TODO)
-- 📦 **Supports Redis for Distributed Throttling**(TODO)
+- ⚡ **Lightweight & Efficient**
+- 🌍 **Supports IP-based & Token-based Rate Limiting – Works seamlessly with Gin middleware.**
+- 🛠️ **Standalone Bucket-Based Rate Limits – Each limiter works independently without external dependencies.**
 - 📝 **Easy Integration**
+- 📦 **Supports Redis for Distributed Throttling**(TODO)
 
 ---
 
