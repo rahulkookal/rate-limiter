@@ -4,13 +4,10 @@ on:
   pull_request:
     types:
       - closed
-    branches:
-      - master
 
 jobs:
   release:
     if: github.event.pull_request.merged == true
-    name: Bump Version & Create Release Tag
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +30,7 @@ jobs:
       - name: Determine Version Type from PR Labels
         id: version_type
         run: |
-          labels=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          labels=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels" | jq -r '.[].name')
 
           if echo "$labels" | grep -q "major"; then
@@ -68,10 +65,10 @@ jobs:
           new_version="v${parts[0]}.${parts[1]}.${parts[2]}"
           echo "new_version=$new_version" >> $GITHUB_ENV
 
-      - name: Create Git Tag
+      - name: Create and Push Git Tag
         run: |
           git tag ${{ env.new_version }}
-          git push origin ${{ env.new_version }}
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git ${{ env.new_version }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
