@@ -3,11 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [0.0.3] - 2025-03-01
-- ⚡ Migrated to bucket-token based algorithm for gin middleware
-- 🔧 Added test cases
+- 🔧 Refactored Gin middleware to use a bucket-token-based algorithm.
+- ⚡ Implemented test cases for validation.
 
 ## [0.0.2] - 2025-03-01
-- ⚡ Implemented test cases.
+- ⚡ Implemented test cases for validation.
 
 ## [0.0.1] - 2025-03-01
 ### Added
